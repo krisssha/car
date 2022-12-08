@@ -1,3 +1,7 @@
+import transport.Car;
+
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
        /* Автомобиль Lada = new Автомобиль();
@@ -40,15 +44,30 @@ public class Main {
         Hyundai .setColor("Оранжевый");
         Hyundai .setEngineVolume(1.6);*/
 
-        Автомобиль Lada = new Автомобиль("Lada", "Granta", 2015, "России", "желтый",
-                1.7);
-        Автомобиль Audi = new Автомобиль("Audi", "A8 50 L TDI quattro", 2020, "Германии", "черный",
-                3.0);
-        Автомобиль BMW = new Автомобиль("BMW", "Z8", 2021, "Германии", "", 3.0);
-        Автомобиль Kia = new Автомобиль("Kia", "Sportage", 2018, "Южной Корее", "красный",
-                2.4);
-        Автомобиль Hyundai = new Автомобиль("Hyundai", "Avante", 2016, "Южной Корее", "оранжевый",
-                1.6);
+        Car Lada = new Car("Lada", "Granta", 2015, "России", "желтый", 1.7,
+                "x000xx000", null, "седан", 0, false,
+                new Car.Key(true, false), new Car.Insurance(LocalDate.now(), 12000, "x333xx"));
+
+        Car Audi = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германии", "черный",
+                3.0, "у890то908", "мкпп", "седан", 0,
+                false, new Car.Key(true, false), new Car.Insurance(LocalDate.now(), 15000, "p333xx"));
+
+        Car BMW = new Car("BMW", "Z8", 2021, "Германии", "", 3.0,
+                "ц456ке456", "автомат", "седан", 6, false,
+                new Car.Key(true, false), new Car.Insurance(LocalDate.now(), 25000, "я333xx"));
+
+        Car Kia = new Car("Kia", "Sportage", 2018, "Южной Корее", "красный",
+                2.4, "л900ол900", "мкпп", "седан", 5,
+                false, new Car.Key(true, false), new Car.Insurance(LocalDate.now(), 15000,
+                "з303xx"));
+
+        Car Hyundai = new Car("Hyundai", "Avante", 2016, "Южной Корее", "оранжевый",
+                1.6, "ш890шо890", "автомат", "седан", 5,
+                true, new Car.Key(true, false), new Car.Insurance(LocalDate.now(), 15000,
+                "л890лол"));
+
+        Lada.tireСhange(12);
+        //System.out.println(Lada.isRubberType());
 
         System.out.println(Lada.toString());
         System.out.println(Audi.toString());
