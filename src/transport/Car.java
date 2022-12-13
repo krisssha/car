@@ -2,13 +2,8 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
@@ -30,11 +25,6 @@ public class Car {
 
     boolean rubberType;
 
-
-    public String getBrand() {
-        return this.brand;
-    }
-
     public Key getKey() {
         return key;
     }
@@ -43,24 +33,8 @@ public class Car {
         this.key = key;
     }
 
-    public String getModel() {
-        return this.model;
-    }
-
     public double getEngineVolume() {
         return this.engineVolume;
-    }
-
-    private String getColor() {
-        return this.color;
-    }
-
-    private int getYear() {
-        return this.year;
-    }
-
-    private String getCountry() {
-        return this.country;
     }
 
     private String getBodyType() {
@@ -93,10 +67,6 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public void setTransmission(String transmission) {
         this.transmission = transmission;
     }
@@ -111,44 +81,20 @@ public class Car {
 
 
     public String toString() {
-        return brand + " " + model + ", " + year + " год выпуска, " + "сборка в " + country + ", " + color +
-                " цвет кузова, объем двигателя - " + engineVolume + ", коробка передач - " + transmission +
+
+        return getBrand() + " " + getModel() + ", " + getYear() + " год выпуска, " + "сборка в " + getCountry() + ", "
+                + getColor() + " цвет кузова, объем двигателя - " + engineVolume + ", коробка передач - " + transmission +
                 ", регистрационный номер авто : " + registrationNumber + ", количество сидений : " + numberOfSeats +
                 ", номер страховки : " + insurance.number + ", стоимость страховки : " + insurance.cost +
                 ", страховка истекает :  " + insurance.expireDate + " Удаленный запуск двигателя " + key.remoteEngineStart
-                + " Бесключевой доступ " + key.isKeylessAccess();
+                + " Бесключевой доступ " + key.isKeylessAccess() + "; вид топлива: " + getFuel() + " на " + getFuelPercentage()
+                + " %";
     }
 
     public Car(String brand, String model, int year, String country, String color,
                double engineVolume, String registrationNumber, String transmission, String bodyType,
                int numberOfSeats, boolean rubberType, Key key, Insurance insurance) {
-
-        setBrand(brand);
-        if (brand == null || brand.isEmpty() || brand.isBlank()) {
-            brand = "Информация не указана";
-        }
-        this.brand = brand;
-
-
-        if (model == null || model.equals("")) {
-            model = "default";
-        }
-        this.model = model;
-
-        if (year <= 0) {
-            year = 2000;
-        }
-        this.year = year;
-
-        if (country == null || country.equals("")) {
-            country = "default";
-        }
-        this.country = country;
-
-        if (color == null || color.equals("")) {
-            color = "белый";
-        }
-        this.color = color;
+        super(brand, model, year, country, color);
 
         if (engineVolume <= 0) {
             engineVolume = 1.5;
@@ -164,11 +110,6 @@ public class Car {
         }
         this.bodyType = bodyType;
 
-       /* if (registrationNumber. == 0) {
-            registrationNumber = "У154ЕН154";
-        } else {
-            this.registrationNumber = getRegistrationNumber();
-        }*/
         if (getNumberOfSeats() == 0) {
             numberOfSeats = 5;
         }
@@ -188,7 +129,12 @@ public class Car {
             this.insurance = insurance;
         }
     }
-
+   /* public Car(String brand, String model, int year, String country, String color,
+               double engineVolume, String registrationNumber, String transmission, String bodyType,
+               int numberOfSeats, boolean rubberType, Key key, Insurance insurance, String fuel, double fuelPercentage, int numberOfSeats1) {
+        super(brand, model, year, country, color, fuel, fuelPercentage);
+        this.numberOfSeats = numberOfSeats1;
+    }*/
 
     public void tireСhange(int month) {
         if (month < 3 || month > 11) {
@@ -253,6 +199,7 @@ public class Car {
             return number;
         }
 
+
         public Insurance(LocalDate expireDate, double cost, String number) {
             if (expireDate == null) {
                 this.expireDate = LocalDate.now().plusDays(365);
@@ -283,5 +230,11 @@ public class Car {
             }
         }
 
+    }
+
+    @Override
+    public void refill() {
+        System.out.println("автомобиль заправлен топливом" + getFuel());
+        setFuelPercentage(100);
     }
 }

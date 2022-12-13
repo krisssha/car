@@ -1,48 +1,11 @@
+import transport.Bus;
 import transport.Car;
+import transport.Train;
 
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-       /* Автомобиль Lada = new Автомобиль();
-        Lada.setBrand("Lada");
-        Lada.setModel("Granta");
-        Lada.setYear(2015);
-        Lada.setCountry("России");
-        Lada.setColor("Желтый");
-        Lada.setEngineVolume(1.7);
-
-        Автомобиль Audi= new Автомобиль();
-        Audi.setBrand("Audi");
-        Audi.setModel("A8 50 L TDI quattro");
-        Audi.setYear(2020);
-        Audi.setCountry("Германии");
-        Audi.setColor("Черный");
-        Audi.setEngineVolume(3.0);
-
-        Автомобиль BMW= new Автомобиль();
-        BMW.setBrand("BMW");
-        BMW.setModel("Z8");
-        BMW.setYear(2021);
-        BMW.setCountry("Германии");
-        BMW.setColor("Черный");
-        BMW.setEngineVolume(3.0);
-
-        Автомобиль Kia= new Автомобиль();
-        Kia.setBrand("Kia");
-        Kia.setModel("Sportage");
-        Kia.setYear(2018);
-        Kia.setCountry("Южной корее");
-        Kia.setColor("Красный");
-        Kia.setEngineVolume(2.4);
-
-        Автомобиль Hyundai = new Автомобиль();
-        Hyundai .setBrand("Hyundai ");
-        Hyundai .setModel("Avante");
-        Hyundai .setYear(2016);
-        Hyundai .setCountry("Южной корее");
-        Hyundai .setColor("Оранжевый");
-        Hyundai .setEngineVolume(1.6);*/
 
         Car Lada = new Car("Lada", "Granta", 2015, "России", "желтый", 1.7,
                 "x000xx000", null, "седан", 0, false,
@@ -74,5 +37,26 @@ public class Main {
         System.out.println(BMW.toString());
         System.out.println(Kia.toString());
         System.out.println(Hyundai.toString());
+
+        System.out.println();
+
+        Train lastochka = new Train("\"Ласточка\"", "B-901", 2011, "России", 301,
+                "Белорусского вокзала" , "Минск-Пассажирский", 3500, 11,
+                "дизель", 55);
+        System.out.println(lastochka.toString());
+         Train leningrad = new Train("\"Ленинград\"", "D-125", 2019, "России", 270,
+                 "Ленинградского вокзала", "Ленинград - Пассажарский", 1700, 8, "" +
+                 "дизель",34);
+        System.out.println(leningrad.toString());
+        System.out.println();
+
+        Bus mercedes = new Bus("Mercedes", "conecto", 2020, "Германии", "белого" , 250,
+                "дизель", 56);
+        System.out.println(mercedes.toString());
+
+        Bus mercedes2 = new Bus("Mercedes", "ecirato", 2021, "Германии", "черного", 350,
+                "бензин",100);
+        System.out.println(mercedes2.toString());
     }
+
 }
