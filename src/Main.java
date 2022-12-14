@@ -1,13 +1,42 @@
+import driver.DriverB;
+import driver.DriverC;
+import driver.DriverD;
 import transport.Bus;
 import transport.Car;
 import transport.Train;
+import transport.Truck;
 
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
+        Car lada = new Car("Lada", "Granta", 1.7);
+        Car audi = new Car("Audi", "A8", 3.0);
+        Car bmw = new Car("BMW", "Z8", 3.0);
+        Car kia = new Car("Kia", "Sportage", 2.4);
+        Bus mercedes = new Bus("Mercedes", "conecto", 6.0);
+        Bus mercedes2 = new Bus("Mercedes", "ecirato", 5.0);
+        Bus paz = new Bus("ПАЗ", "3205", 4.5);
+        Bus baz = new Bus("БАЗ", "2215", 4.5);
+        Truck gaz = new Truck("ГАЗ", "7878", 6.2);
+        Truck isuzu = new Truck("ISUZU", "00", 6.2);
+        Truck fuso = new Truck("FUSO", "86", 7.1);
+        Truck kamaz = new Truck("КамАЗ", "0989", 8.2);
 
-        Car Lada = new Car("Lada", "Granta", 2015, "России", "желтый", 1.7,
+        lada.start();
+        gaz.stop();
+        isuzu.pitstop();
+
+        DriverB andrey = new DriverB("Andrey", true, 5);
+        DriverC mihail = new DriverC("Mihail", true, 23);
+        DriverD vasiliy = new DriverD("Vasiliy", true, 10);
+
+        andrey.startMove(lada);
+        mihail.stopMove(fuso);
+        vasiliy.refill(mercedes2);
+
+
+      /*  Car Lada = new Car("Lada", "Granta", 2015, "России", "желтый", 1.7,
                 "x000xx000", null, "седан", 0, false,
                 new Car.Key(true, false), new Car.Insurance(LocalDate.now(), 12000, "x333xx"));
 
@@ -56,7 +85,7 @@ public class Main {
 
         Bus mercedes2 = new Bus("Mercedes", "ecirato", 2021, "Германии", "черного", 350,
                 "бензин",100);
-        System.out.println(mercedes2.toString());
+        System.out.println(mercedes2.toString());*/
     }
 
 }

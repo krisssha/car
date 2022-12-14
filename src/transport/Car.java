@@ -1,15 +1,44 @@
 package transport;
 
-import java.time.LocalDate;
+public class Car extends Transport implements Competing{
 
-public class Car extends Transport {
-    private double engineVolume;
+
+    public Car(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+    }
+
+    @Override
+    public void start() {
+        System.out.println("Автомобиль " + getBrand() + " "+ getModel()+ " начал движение.");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Автомобиль " + getBrand() + " "+ getModel()+ " окончил движение.");
+    }
+
+    @Override
+    public void pitstop() {
+        System.out.println("Автомобиль прошел питстоп.");
+    }
+
+    @Override
+    public int bestLoopTime() {
+        return (int) (Math.random()*5);
+    }
+
+    @Override
+    public int maxSpeed() {
+        return (int) (Math.random()*220);
+    }
+}
+  /*  private double engineVolume;
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
     private final int numberOfSeats;
-    private Key key;
-    private Insurance insurance;
+   private Key key;
+   private Insurance insurance;
 
     public Insurance getInsurance() {
         return insurance;
@@ -59,7 +88,7 @@ public class Car extends Transport {
 
     public void setBrand(String brand) {
         if (brand == null || brand.isEmpty() || brand.isBlank()) {
-            brand = "Информация не указана";
+            brand = "&#x418;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x44F; &#x43D;&#x435; &#x443;&#x43A;&#x430;&#x437;&#x430;&#x43D;&#x430;";
         }
     }
 
@@ -82,12 +111,12 @@ public class Car extends Transport {
 
     public String toString() {
 
-        return getBrand() + " " + getModel() + ", " + getYear() + " год выпуска, " + "сборка в " + getCountry() + ", "
-                + getColor() + " цвет кузова, объем двигателя - " + engineVolume + ", коробка передач - " + transmission +
-                ", регистрационный номер авто : " + registrationNumber + ", количество сидений : " + numberOfSeats +
-                ", номер страховки : " + insurance.number + ", стоимость страховки : " + insurance.cost +
-                ", страховка истекает :  " + insurance.expireDate + " Удаленный запуск двигателя " + key.remoteEngineStart
-                + " Бесключевой доступ " + key.isKeylessAccess() + "; вид топлива: " + getFuel() + " на " + getFuelPercentage()
+        return getBrand() + " " + getModel() + ", " + getYear() + " &#x433;&#x43E;&#x434; &#x432;&#x44B;&#x43F;&#x443;&#x441;&#x43A;&#x430;, " + "&#x441;&#x431;&#x43E;&#x440;&#x43A;&#x430; &#x432; " + getCountry() + ", "
+                + getColor() + " &#x446;&#x432;&#x435;&#x442; &#x43A;&#x443;&#x437;&#x43E;&#x432;&#x430;, &#x43E;&#x431;&#x44A;&#x435;&#x43C; &#x434;&#x432;&#x438;&#x433;&#x430;&#x442;&#x435;&#x43B;&#x44F; - " + engineVolume + ", &#x43A;&#x43E;&#x440;&#x43E;&#x431;&#x43A;&#x430; &#x43F;&#x435;&#x440;&#x435;&#x434;&#x430;&#x447; - " + transmission +
+                ", &#x440;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x43E;&#x43D;&#x43D;&#x44B;&#x439; &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x430;&#x432;&#x442;&#x43E; : " + registrationNumber + ", &#x43A;&#x43E;&#x43B;&#x438;&#x447;&#x435;&#x441;&#x442;&#x432;&#x43E; &#x441;&#x438;&#x434;&#x435;&#x43D;&#x438;&#x439; : " + numberOfSeats +
+                ", &#x43D;&#x43E;&#x43C;&#x435;&#x440; &#x441;&#x442;&#x440;&#x430;&#x445;&#x43E;&#x432;&#x43A;&#x438; : " + insurance.number + ", &#x441;&#x442;&#x43E;&#x438;&#x43C;&#x43E;&#x441;&#x442;&#x44C; &#x441;&#x442;&#x440;&#x430;&#x445;&#x43E;&#x432;&#x43A;&#x438; : " + insurance.cost +
+                ", &#x441;&#x442;&#x440;&#x430;&#x445;&#x43E;&#x432;&#x43A;&#x430; &#x438;&#x441;&#x442;&#x435;&#x43A;&#x430;&#x435;&#x442; :  " + insurance.expireDate + " &#x423;&#x434;&#x430;&#x43B;&#x435;&#x43D;&#x43D;&#x44B;&#x439; &#x437;&#x430;&#x43F;&#x443;&#x441;&#x43A; &#x434;&#x432;&#x438;&#x433;&#x430;&#x442;&#x435;&#x43B;&#x44F; " + key.remoteEngineStart
+                + " &#x411;&#x435;&#x441;&#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x43E;&#x439; &#x434;&#x43E;&#x441;&#x442;&#x443;&#x43F; " + key.isKeylessAccess() + "; &#x432;&#x438;&#x434; &#x442;&#x43E;&#x43F;&#x43B;&#x438;&#x432;&#x430;: " + getFuel() + " &#x43D;&#x430; " + getFuelPercentage()
                 + " %";
     }
 
@@ -102,11 +131,11 @@ public class Car extends Transport {
         this.engineVolume = engineVolume;
 
         if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
-            transmission = "автомат";
+            transmission = "&#x430;&#x432;&#x442;&#x43E;&#x43C;&#x430;&#x442;";
         }
         this.transmission = transmission;
         if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
-            bodyType = "седан";
+            bodyType = "&#x441;&#x435;&#x434;&#x430;&#x43D;";
         }
         this.bodyType = bodyType;
 
@@ -129,12 +158,12 @@ public class Car extends Transport {
             this.insurance = insurance;
         }
     }
-   /* public Car(String brand, String model, int year, String country, String color,
+   *//* public Car(String brand, String model, int year, String country, String color,
                double engineVolume, String registrationNumber, String transmission, String bodyType,
                int numberOfSeats, boolean rubberType, Key key, Insurance insurance, String fuel, double fuelPercentage, int numberOfSeats1) {
         super(brand, model, year, country, color, fuel, fuelPercentage);
         this.numberOfSeats = numberOfSeats1;
-    }*/
+    }*//*
 
     public void tireСhange(int month) {
         if (month < 3 || month > 11) {
@@ -232,9 +261,8 @@ public class Car extends Transport {
 
     }
 
-    @Override
-    public void refill() {
-        System.out.println("автомобиль заправлен топливом" + getFuel());
-        setFuelPercentage(100);
-    }
-}
+
+   public void refill() {
+       System.out.println("автомобиль заправлен топливом" + getFuel());
+      setFuelPercentage(100);
+    }*/

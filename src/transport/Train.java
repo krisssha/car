@@ -1,7 +1,21 @@
 package transport;
 
 public class Train extends Transport {
-    private int price;
+    public Train(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void stop() {
+
+    }
+}
+ /*   private int price;
     private double time;
     private String startingStationName;
     private String lastStop;
@@ -93,3 +107,4 @@ public class Train extends Transport {
                 + " %";
     }
 }
+*/

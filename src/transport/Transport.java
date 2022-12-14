@@ -3,12 +3,39 @@ package transport;
 public abstract class Transport {
     private final String brand;
     private final String model;
-    private final int year;
+    private double engineVolume;
+
+    public Transport(String brand, String model, double engineVolume) {
+        this.brand = brand;
+        this.model = model;
+        this.engineVolume = engineVolume;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    public abstract void start();
+
+    public abstract void stop();
+
+
+}
+   /* private final int year;
     private final String country;
     private String color;
     private int maxSpeed;
     private String fuel;
-    private double fuelPercentage;
+    private double fuelPercentage;*/
+/*
 
 
     public String getBrand() {
@@ -131,4 +158,4 @@ this.fuelPercentage = fuelPercentage;
     }
     public abstract void refill();
 
-}
+}*/
