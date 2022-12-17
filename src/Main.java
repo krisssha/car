@@ -24,14 +24,28 @@ public class Main {
         gaz.stop();
         isuzu.pitstop();
 
-        DriverB andrey = new DriverB("Andrey", true, 5);
-        DriverC mihail = new DriverC("Mihail", true, 23);
-        DriverD vasiliy = new DriverD("Vasiliy", true, 10);
+        DriverB andrey = new DriverB("Andrey", true, 5, "c");
+        DriverC mihail = new DriverC("Mihail", true, 23, "b");
+        DriverD vasiliy = new DriverD("Vasiliy", true, 10, "d");
 
         andrey.startMove(lada);
         mihail.stopMove(fuso);
         vasiliy.refill(mercedes2);
 
 
+        service(lada, audi, bmw, kia, gaz, isuzu, fuso, kamaz, mercedes2, mercedes, paz, baz);
+
     }
+
+    private static void service(Transport... transports) {
+        for (int i = 0; i < transports.length; i++) {
+            if (!transports[i].service()) {
+                throw new RuntimeException("Диагностика не пройдена!");
+            }
+
+        }
+
+    }
+
 }
+

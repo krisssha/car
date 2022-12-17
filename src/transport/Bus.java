@@ -35,6 +35,11 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
+    public boolean service() {
+        return Math.random() > 0.7;
+    }
+
+    @Override
     public void pitstop() {
         System.out.println("Автобус прошел питстоп");
     }

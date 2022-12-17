@@ -36,6 +36,12 @@ public class Car extends Transport implements Competing{
     }
 
     @Override
+    public boolean service() {
+        System.out.println();
+        return true;
+    }
+
+    @Override
     public void pitstop() {
         System.out.println("Автомобиль прошел питстоп.");
     }
