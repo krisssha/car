@@ -1,8 +1,17 @@
 package transport;
 
 public class Bus extends Transport implements Competing {
-    public Bus(String brand, String model, double engineVolume) {
+    public Bus(String brand, String model, double engineVolume, capacityType capacityType) {
         super(brand, model, engineVolume);
+        this.capacityType = capacityType;
+    }
+
+    public transport.capacityType getCapacityType() {
+        return capacityType;
+    }
+
+    public void setCapacityType(transport.capacityType capacityType) {
+        this.capacityType = capacityType;
     }
 
     @Override
@@ -14,6 +23,15 @@ public class Bus extends Transport implements Competing {
     @Override
     public void stop() {
         System.out.println("Автобус " + getBrand() + " "+ getModel()+ " окончил движение.");
+    }
+
+    @Override
+    public void printType() {
+        if(capacityType==null){
+            System.out.println("данных недостаточно");
+        } else {
+            System.out.println(capacityType);
+        }
     }
 
     @Override
@@ -30,24 +48,8 @@ public class Bus extends Transport implements Competing {
     public int maxSpeed() {
         return (int) (Math.random()*100);
     }
+    private capacityType capacityType;
 
 
-  /*  public Bus(String brand, String model, int year, String country, String color, int maxSpeed) {
-        super(brand, model, year, country, color, maxSpeed);
-    }
 
-
-    public Bus(String brand, String model, int year, String country, String color, int maxSpeed, String fuel,
-               double fuelPercentage) {
-        super(brand, model, year, country, color, maxSpeed, fuel, fuelPercentage);
-    }
-    public void refill() {
-        System.out.println("автобус заправлен топливом : " + getFuel());
-        setFuelPercentage(100);
-    }
-    public String toString () {
-        return "Автобус " + getBrand() + " "+ getModel()+ " " + getYear() + " года выпуска из " + getCountry()+
-                " , " + getColor() + " цвета, с максимальной скоростью - " + getMaxSpeed() + " км/ч"+ "; вид топлива: "
-                + getFuel() + " на " + getFuelPercentage() + " %";
-    }*/
 }

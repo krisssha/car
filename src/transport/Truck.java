@@ -2,8 +2,17 @@ package transport;
 
 public class Truck extends Transport implements Competing {
 
-    public Truck(String brand, String model, double engineVolume) {
+    public Truck(String brand, String model, double engineVolume, loadType loadType) {
         super(brand, model, engineVolume);
+        this.loadType = loadType;
+    }
+
+    public transport.loadType getLoadType() {
+        return loadType;
+    }
+
+    public void setLoadType(transport.loadType loadType) {
+        this.loadType = loadType;
     }
 
     @Override
@@ -16,6 +25,16 @@ public class Truck extends Transport implements Competing {
     public void stop() {
         System.out.println("Грузовик " + getBrand() + " "+ getModel()+ " окончил движение.");
 
+    }
+
+    @Override
+    public void printType() {
+        if (loadType==null){
+            System.out.println("данных недостаточно");
+        }
+        else {
+            System.out.println(loadType);
+        }
     }
 
     @Override
@@ -32,4 +51,5 @@ public class Truck extends Transport implements Competing {
     public int maxSpeed() {
         return (int) (Math.random()*160);
     }
+    private loadType loadType;
 }
